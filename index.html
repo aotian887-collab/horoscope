@@ -110,7 +110,7 @@
     }
     .big-emoji { font-size: 32px; display: block; margin-bottom: 4px; }
     .overall-stars { font-size: 22px; letter-spacing: 3px; color: #f0d060; margin-bottom: 10px; }
-    .overall-stars .dim, .stars .dim { opacity: 0.15; }
+    .overall-stars .dim, .fs .dim { opacity: 0.15; }
     .fortune-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
     .fi { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 10px 6px; }
     .fi .fl { font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 3px; }
@@ -437,10 +437,10 @@
           <div class="lucky-item"><div class="ll">幸运颜色</div><div class="lv" style="color:${colorCodes[ci]}">● ${colors[ci]}</div></div>
         </div>
         <div class="fortune-text">
-          ${overallTexts[Math.floor(rng()*8)]}<br><br>
-          <span style="color:rgba(255,255,255,0.4)">💕</span> ${loveTexts[Math.floor(rng()*8)]}<br>
-          <span style="color:rgba(255,255,255,0.4)">💼</span> ${careerTexts[Math.floor(rng()*8)]}<br>
-          <span style="color:rgba(255,255,255,0.4)">🏃</span> ${healthTexts[Math.floor(rng()*8)]}
+          ${overallTexts[Math.floor(rng()*overallTexts.length)]}<br><br>
+          <span style="color:rgba(255,255,255,0.4)">💕</span> ${loveTexts[Math.floor(rng()*loveTexts.length)]}<br>
+          <span style="color:rgba(255,255,255,0.4)">💼</span> ${careerTexts[Math.floor(rng()*careerTexts.length)]}<br>
+          <span style="color:rgba(255,255,255,0.4)">🏃</span> ${healthTexts[Math.floor(rng()*healthTexts.length)]}
         </div>
       </div>`;
   }
