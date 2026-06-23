@@ -94,6 +94,8 @@
       border-radius: 12px; padding: 10px 4px;
       color: rgba(255,255,255,0.6); font-size: 11px;
       cursor: pointer; transition: all 0.25s; font-family: inherit; line-height: 1.4;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .sign-btn:active { transform: scale(0.95); }
     .sign-btn.selected {
@@ -126,7 +128,7 @@
     /* ============================
        塔罗牌
        ============================ */
-    .tarot-area { position: relative; }
+    .tarot-area { position: relative; perspective: 600px; }
     .tarot-card-back {
       width: 120px; height: 170px; margin: 0 auto 16px;
       background: linear-gradient(135deg, #2a1a4e, #3d2870);
@@ -135,6 +137,9 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 40px; color: rgba(255,255,255,0.5);
       transition: all 0.3s; position: relative; overflow: hidden;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transform-style: preserve-3d;
     }
     .tarot-card-back:hover, .tarot-card-back:active {
       border-color: rgba(200,170,240,0.7);
@@ -194,6 +199,8 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 36px; transition: all 0.3s; position: relative;
       border: 2px solid rgba(180,140,100,0.4);
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .qian-tube:hover, .qian-tube:active {
       border-color: rgba(220,180,140,0.7);
@@ -250,6 +257,8 @@
       border-radius: 12px; padding: 10px 4px;
       color: rgba(255,255,255,0.55); font-size: 12px;
       cursor: pointer; transition: all 0.25s; font-family: inherit; font-weight: 600;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     .mbti-btn:active { transform: scale(0.95); }
     .mbti-btn.selected {
