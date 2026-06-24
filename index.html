@@ -371,13 +371,14 @@ const tarotCards=[
   {name:'世界',emoji:'🌍',up:'圆满和成就的一天，一件事的完成也是新的开始。',dn:'接近成功但还差一步，坚持住。'},
 ];
 function drawTarotCard(){
+  if (drawTarotCard._timeout) clearTimeout(drawTarotCard._timeout);
   const cb=document.getElementById('tarotCard');
   cb.classList.remove('flipped');void cb.offsetWidth;cb.classList.add('flipped');
   const rng=seedRandom(dateSeed()*7+3);
   const idx=Math.floor(rng()*tarotCards.length);
   const up=rng()>.5;const c=tarotCards[idx];
   const m=up?c.up:c.dn,pc=up?'upright':'reversed',pt=up?'正位 ↑':'逆位 ↓';
-  setTimeout(function(){
+  drawTarotCard._timeout=setTimeout(function(){
     document.getElementById('tarotCard').style.display='none';
     document.getElementById('tarotResult').innerHTML=`
       <div class="fcard">
@@ -386,8 +387,9 @@ function drawTarotCard(){
         <div class="tarot-position ${pc}">${pt}</div>
         <div class="tarot-meaning">${m}</div>
         <div class="tarot-tip">今天的指引：${up?'顺势而行，直觉会指引你':'三思后行，谨慎比冲动更有力量'}</div>
-        <button class="retry-btn" onclick="resetTarot()">再抽一张</button>
+        <button class="retry-btn" id="tarotRetryBtn">再抽一张</button>
       </div>`;
+    document.getElementById('tarotRetryBtn').addEventListener('click', resetTarot);
   },600);
 }
 function resetTarot(){
@@ -410,18 +412,20 @@ const qianData=[
   {level:'xia',label:'下签',verse:'抽刀断水水更流，举杯消愁愁更愁。\n人生在世不称意，明朝散发弄扁舟。',interp:'如果今天遇到烦心事，不要硬扛。有时候顺应情绪比对抗情绪更有效。允许自己不完美，明天又是新的一天。'},
 ];
 function drawQian(){
+  if (drawQian._timeout) clearTimeout(drawQian._timeout);
   const tube=document.getElementById('qianTube');
   tube.classList.remove('shaking');void tube.offsetWidth;tube.classList.add('shaking');
   const rng=seedRandom(dateSeed()*13+7);
   const q=qianData[Math.floor(rng()*qianData.length)];
-  setTimeout(function(){
+  drawQian._timeout=setTimeout(function(){
     document.getElementById('qianResult').innerHTML=`
       <div class="fcard">
         <div class="qian-level ${q.level}">${q.label}</div>
         <div class="qian-verse">${q.verse.replace(/\n/g,'<br>')}</div>
         <div class="qian-interpret">${q.interp}</div>
-        <button class="retry-btn" onclick="resetQian()">再摇一签</button>
+        <button class="retry-btn" id="qianRetryBtn">再摇一签</button>
       </div>`;
+    document.getElementById('qianRetryBtn').addEventListener('click', resetQian);
   },500);
 }
 function resetQian(){
