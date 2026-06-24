@@ -32,8 +32,8 @@ body{
 .nongli-text{font-size:10px;color:rgba(255,255,255,.2);margin-bottom:14px}
 
 /* Tabs */
-.tabs{display:flex;gap:3px;background:rgba(255,255,255,.04);border-radius:14px;padding:4px;margin-bottom:18px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.tab{flex-shrink:0;min-width:50px;border:none;border-radius:11px;padding:7px 8px;background:transparent;color:rgba(255,255,255,.35);font-size:11px;cursor:pointer;transition:all .25s;font-family:inherit;white-space:nowrap;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.tabs{display:flex;gap:2px;background:rgba(255,255,255,.04);border-radius:14px;padding:4px;margin-bottom:18px;overflow-x:auto;touch-action:manipulation}
+.tab{flex-shrink:0;min-width:44px;border:none;border-radius:11px;padding:6px 7px;background:transparent;color:rgba(255,255,255,.35);font-size:10px;cursor:pointer;transition:all .25s;font-family:inherit;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .tab.active{background:rgba(168,130,220,.3);color:#e8d5f5;font-weight:600}
 .tab-icon{font-size:16px;display:block;margin-bottom:1px}
 
@@ -56,7 +56,7 @@ body{
 
 /* 星级 */
 .stars{font-size:22px;letter-spacing:3px;color:#f0d060;margin-bottom:8px}
-.stars .dim{opacity:.12}
+.stars .dim,.fs .dim{opacity:.12}
 
 /* 运势分项 */
 .fitems{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:12px}
@@ -371,7 +371,8 @@ const tarotCards=[
   {name:'世界',emoji:'🌍',up:'圆满和成就的一天，一件事的完成也是新的开始。',dn:'接近成功但还差一步，坚持住。'},
 ];
 function drawTarotCard(){
-  const cb=document.getElementById('tarotCard');cb.classList.add('flipped');
+  const cb=document.getElementById('tarotCard');
+  cb.classList.remove('flipped');void cb.offsetWidth;cb.classList.add('flipped');
   const rng=seedRandom(dateSeed()*7+3);
   const idx=Math.floor(rng()*tarotCards.length);
   const up=rng()>.5;const c=tarotCards[idx];
@@ -409,7 +410,8 @@ const qianData=[
   {level:'xia',label:'下签',verse:'抽刀断水水更流，举杯消愁愁更愁。\n人生在世不称意，明朝散发弄扁舟。',interp:'如果今天遇到烦心事，不要硬扛。有时候顺应情绪比对抗情绪更有效。允许自己不完美，明天又是新的一天。'},
 ];
 function drawQian(){
-  document.getElementById('qianTube').classList.add('shaking');
+  const tube=document.getElementById('qianTube');
+  tube.classList.remove('shaking');void tube.offsetWidth;tube.classList.add('shaking');
   const rng=seedRandom(dateSeed()*13+7);
   const q=qianData[Math.floor(rng()*qianData.length)];
   setTimeout(function(){
